@@ -1,6 +1,6 @@
 # Laravel Helpers Package
 
-A minimal Laravel helper package that provides generic utility functions for strings, arrays, and dates. It is compatible with Laravel 9, 10, 11, 12, and 13.
+A collection of real-world, highly useful helper functions for Laravel projects. It is compatible with Laravel 9, 10, 11, 12, and 13.
 
 ## Installation
 
@@ -14,50 +14,66 @@ The package will automatically register its service provider.
 
 ## Available Helpers
 
-### `str_slugify`
-Slugifies a string. Returns an empty string for null/empty values.
+### `is_active_route`
+Returns a string (default: `'active'`) if the current route matches the given route name(s). Perfect for setting active classes in navigation menus.
 
 ```php
-use function Najmul\Helpers\str_slugify;
+use function Najmul\Helpers\is_active_route;
 
-str_slugify('Hello World'); // 'hello-world'
+// In a Blade template:
+// <li class="{{ is_active_route('dashboard') }}">Dashboard</li>
+// <li class="{{ is_active_route(['users.index', 'users.create']) }}">Users</li>
 ```
 
-### `array_filter_null`
-Removes only `null` values from an array (preserves `false`, `0`, and empty strings).
+### `generate_initials`
+Generates initials from a name (e.g., "John Doe" -> "JD"). Ideal for UI avatars when a user hasn't uploaded a profile picture.
 
 ```php
-use function Najmul\Helpers\array_filter_null;
+use function Najmul\Helpers\generate_initials;
 
-array_filter_null(['a' => 1, 'b' => null, 'c' => 0]); // ['a' => 1, 'c' => 0]
+generate_initials('John Doe'); // 'JD'
+generate_initials('Alice'); // 'AL'
 ```
 
-### `array_get_nested`
-Gets a value from a deeply nested array using dot notation.
+### `estimated_read_time`
+Estimates the reading time in minutes for a given text. Great for blog posts and articles.
 
 ```php
-use function Najmul\Helpers\array_get_nested;
+use function Najmul\Helpers\estimated_read_time;
 
-array_get_nested(['user' => ['name' => 'John']], 'user.name'); // 'John'
+$content = "Long article content here...";
+$minutes = estimated_read_time($content); // e.g., 5
 ```
 
-### `format_date`
-Safely formats a date string or Carbon instance. Returns an empty string on invalid dates.
+### `api_response`
+A standardized JSON response for APIs. Keeps your API responses consistent across controllers.
 
 ```php
-use function Najmul\Helpers\format_date;
+use function Najmul\Helpers\api_response;
 
-format_date('2026-03-17'); // '2026-03-17'
+return api_response(true, 'User created successfully', $user, 201);
+// { "success": true, "message": "User created successfully", "data": { ... } }
+
+return api_response(false, 'Validation failed', null, 422);
 ```
 
-### `optional_trim`
-Trims a string. Returns `null` if the string is empty or was originally `null`.
+### `format_currency`
+Formats a number as currency.
 
 ```php
-use function Najmul\Helpers\optional_trim;
+use function Najmul\Helpers\format_currency;
 
-optional_trim('  hello  '); // 'hello'
-optional_trim('   '); // null
+format_currency(1250.5); // '$1,250.50'
+format_currency(500, '€'); // '€500.00'
+```
+
+### `clean_phone_number`
+Extracts only the digits from a phone number string. Extremely useful for sanitizing phone numbers before saving to the database.
+
+```php
+use function Najmul\Helpers\clean_phone_number;
+
+clean_phone_number('+1 (555) 123-4567'); // '15551234567'
 ```
 
 ## Supported Laravel Versions
