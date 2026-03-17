@@ -7,7 +7,7 @@ A minimal Laravel helper package that provides generic utility functions for str
 You can install the package via composer:
 
 ```bash
-composer require najmul/my-helpers
+composer require najmul-hasan-sobuj/my-helpers
 ```
 
 The package will automatically register its service provider.
