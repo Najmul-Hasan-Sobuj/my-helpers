@@ -10,7 +10,7 @@ You can install the package via composer:
 composer require najmul-hasan-sobuj/my-helpers
 ```
 
-The package will automatically register its service provider.
+The package will automatically register its service provider. These functions are globally available, just like Laravel's built-in helper functions, so you don't need to import any namespace!
 
 ## Available Helpers
 
@@ -18,8 +18,6 @@ The package will automatically register its service provider.
 Returns a string (default: `'active'`) if the current route matches the given route name(s). Perfect for setting active classes in navigation menus.
 
 ```php
-use function Najmul\Helpers\is_active_route;
-
 // In a Blade template:
 // <li class="{{ is_active_route('dashboard') }}">Dashboard</li>
 // <li class="{{ is_active_route(['users.index', 'users.create']) }}">Users</li>
@@ -29,8 +27,6 @@ use function Najmul\Helpers\is_active_route;
 Generates initials from a name (e.g., "John Doe" -> "JD"). Ideal for UI avatars when a user hasn't uploaded a profile picture.
 
 ```php
-use function Najmul\Helpers\generate_initials;
-
 generate_initials('John Doe'); // 'JD'
 generate_initials('Alice'); // 'AL'
 ```
@@ -39,8 +35,6 @@ generate_initials('Alice'); // 'AL'
 Estimates the reading time in minutes for a given text. Great for blog posts and articles.
 
 ```php
-use function Najmul\Helpers\estimated_read_time;
-
 $content = "Long article content here...";
 $minutes = estimated_read_time($content); // e.g., 5
 ```
@@ -49,8 +43,6 @@ $minutes = estimated_read_time($content); // e.g., 5
 A standardized JSON response for APIs. Keeps your API responses consistent across controllers.
 
 ```php
-use function Najmul\Helpers\api_response;
-
 return api_response(true, 'User created successfully', $user, 201);
 // { "success": true, "message": "User created successfully", "data": { ... } }
 
@@ -61,8 +53,6 @@ return api_response(false, 'Validation failed', null, 422);
 Formats a number as currency.
 
 ```php
-use function Najmul\Helpers\format_currency;
-
 format_currency(1250.5); // '$1,250.50'
 format_currency(500, '€'); // '€500.00'
 ```
@@ -71,8 +61,6 @@ format_currency(500, '€'); // '€500.00'
 Extracts only the digits from a phone number string. Extremely useful for sanitizing phone numbers before saving to the database.
 
 ```php
-use function Najmul\Helpers\clean_phone_number;
-
 clean_phone_number('+1 (555) 123-4567'); // '15551234567'
 ```
 

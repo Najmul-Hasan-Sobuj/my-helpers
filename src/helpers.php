@@ -1,10 +1,8 @@
 <?php
 
-namespace Najmul\Helpers;
-
 use Illuminate\Http\JsonResponse;
 
-if (!function_exists('Najmul\Helpers\is_active_route')) {
+if (!function_exists('is_active_route')) {
     /**
      * Return a string (like 'active') if the current route matches the given route name(s).
      * Useful for setting active classes in navigation menus.
@@ -23,7 +21,7 @@ if (!function_exists('Najmul\Helpers\is_active_route')) {
     }
 }
 
-if (!function_exists('Najmul\Helpers\generate_initials')) {
+if (!function_exists('generate_initials')) {
     /**
      * Generate initials from a name (e.g., "John Doe" -> "JD").
      * Ideal for UI avatars.
@@ -43,7 +41,7 @@ if (!function_exists('Najmul\Helpers\generate_initials')) {
     }
 }
 
-if (!function_exists('Najmul\Helpers\estimated_read_time')) {
+if (!function_exists('estimated_read_time')) {
     /**
      * Estimate reading time in minutes for a given text (e.g., blog posts).
      *
@@ -60,7 +58,7 @@ if (!function_exists('Najmul\Helpers\estimated_read_time')) {
     }
 }
 
-if (!function_exists('Najmul\Helpers\api_response')) {
+if (!function_exists('api_response')) {
     /**
      * Standardized JSON response for APIs.
      *
@@ -85,7 +83,7 @@ if (!function_exists('Najmul\Helpers\api_response')) {
     }
 }
 
-if (!function_exists('Najmul\Helpers\format_currency')) {
+if (!function_exists('format_currency')) {
     /**
      * Format a number as currency.
      *
@@ -100,7 +98,7 @@ if (!function_exists('Najmul\Helpers\format_currency')) {
     }
 }
 
-if (!function_exists('Najmul\Helpers\clean_phone_number')) {
+if (!function_exists('clean_phone_number')) {
     /**
      * Extract only the digits from a phone number string.
      * Useful before saving to the database.
@@ -113,3 +111,4 @@ if (!function_exists('Najmul\Helpers\clean_phone_number')) {
         return preg_replace('/[^0-9]/', '', $phone);
     }
 }
+
