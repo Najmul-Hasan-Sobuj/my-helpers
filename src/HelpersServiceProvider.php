@@ -19,6 +19,11 @@ class HelpersServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/helpers.php' => app_path('Helpers/helpers.php'),
+            ], 'laravel-helpers');
+        }
     }
 }
+

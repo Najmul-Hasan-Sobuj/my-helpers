@@ -12,6 +12,40 @@ composer require najmul-hasan-sobuj/my-helpers
 
 The package will automatically register its service provider. These functions are globally available, just like Laravel's built-in helper functions, so you don't need to import any namespace!
 
+## Publishing the Helpers (Optional)
+
+If you would like to modify the helper functions or add your own, you can publish the `helpers.php` file to your project's `app/Helpers` directory.
+
+Run the following command:
+
+```bash
+php artisan vendor:publish --tag="laravel-helpers"
+```
+
+After publishing, the file will be located at `app/Helpers/helpers.php`. You can modify it however you like. 
+
+To ensure your Laravel application loads this file, you must add it to the `autoload -> files` array in your project's `composer.json` file:
+
+```json
+"autoload": {
+    "psr-4": {
+        "App\\": "app/",
+        "Database\\Factories\\": "database/factories/",
+        "Database\\Seeders\\": "database/seeders/"
+    },
+    "files": [
+        "app/Helpers/helpers.php"
+    ]
+},
+```
+
+Then, run:
+```bash
+composer dump-autoload
+```
+
+Because all helper functions are wrapped in `if (!function_exists('...'))`, your local application's helper functions will take precedence over the package's defaults if your autoloader loads them first.
+
 ## Available Helpers
 
 ### `is_active_route`
