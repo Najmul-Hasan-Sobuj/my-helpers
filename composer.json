@@ -1,0 +1,33 @@
+{
+    "name": "najmul/my-helpers",
+    "description": "Minimal Laravel helper package supporting Laravel 9 to 13",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Najmul",
+            "email": "najmul@example.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^9.0|^10.0|^11.0|^12.0|^13.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Najmul\\Helpers\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Najmul\\Helpers\\HelpersServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
